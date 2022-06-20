@@ -23,9 +23,9 @@ app.post("/sign-up", (req, res) => {
 
 app.post("/tweets", (req, res) => {
   const tweet = {
-    username: req.body.username,
+    username: req.headers.user,
     tweet: req.body.tweet,
-    avatar: users.find((user) => user.username === req.body.username).avatar,
+    avatar: users.find((user) => user.username === req.headers.user).avatar,
   };
 
   if (tweet.username.length === 0) {
